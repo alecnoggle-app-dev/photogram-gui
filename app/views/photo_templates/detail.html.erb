@@ -29,13 +29,22 @@
     Edit photo
   </dt>
   <dd>
-    Something
+    <form action="/update_photo/777">
+      <label for="browser_image">Image</label>
+      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="https://robohash.org/dolorehicincidunt.png?size=300x300&amp;set=set1">
+
+      <label for="browser_caption">Caption</label>
+      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo...">Once you’ve accepted your flaws, no one can use them against you.</textarea>
+
+      <button>Update photo</button>
+    </form>
   </dd>
   <dt>
     Delete photo
   </dt>
   <dd>
-    Something
+    <a href="/delete_photo/<%= @the_photo.id %>">
+    Delete this photo
   </dd>
 </dl>
 
