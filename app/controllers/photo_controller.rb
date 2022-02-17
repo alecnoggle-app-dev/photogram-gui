@@ -5,6 +5,8 @@ class PhotoController < ActionController::Base
   end
 
   def photo_details
+    # Params looks like this {"path_id"=>"22"}
+    @the_id = params.fetch("path_id")
 
     render({ :template => "photo_templates/detail.html.erb" })
   end
