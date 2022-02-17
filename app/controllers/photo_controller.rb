@@ -31,7 +31,6 @@ class PhotoController < ApplicationController
   end
 
   def add
-
     # Params looks like this: {"query_image"=>"a", "query_caption"=>"b", "query_owner_id"=>"c"}
     input_image = params.fetch("query_image")
     input_caption = params.fetch("query_caption")
@@ -47,5 +46,25 @@ class PhotoController < ApplicationController
 
     # render({ :template => "photo_templates/add.html.erb"})
     redirect_to("/photos/#{a_new_photo.id.to_s}")
+  end
+
+  def update
+    # Params looks like this: Parameters: {"query_image"=>"url", "query_caption"=>"text", "path_id"=>"785"}
+    
+    the_id = params.fetch("path_id")
+
+    matching_photos = Photo.where({ :id => the_id })
+    the_photo = matching_photos.at(0)
+
+    new_image = params.fetch("query_image")
+    new_caption = params.fetch("query_caption")
+
+    the_photo.image = new_image
+    the_photo.caption = new_caption
+
+    the_photo.save
+
+    # render({ :template => "photo_templates/update.html.erb"})
+    redirect_to("/photos/#{the_photo.id.to_s}")
   end
 end
