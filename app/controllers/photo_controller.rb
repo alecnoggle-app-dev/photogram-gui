@@ -1,4 +1,4 @@
-class PhotoController < ActionController::Base
+class PhotoController < ApplicationController
   def landing_page
 
     render({ :template => "photo_templates/landing.html.erb" })
