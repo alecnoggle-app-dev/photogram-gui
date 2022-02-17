@@ -8,8 +8,15 @@ class UserController < ActionController::Base
 
   def user_details
     # Params looks like this {"path_id"=>"22"}
-    @the_id = params.fetch("path_id")
+    the_username = params.fetch("path_id")
 
-    render({ :template => "user_templates/detail.html.erb" })
+    matching_users = User.where({ :username => the_username })
+    @the_user = matching_users.at(0)
+
+    if @the_user == nil
+      redirect_to("/404")
+    else
+      render({ :template => "user_templates/detail.html.erb" })
+    end
   end
 end
