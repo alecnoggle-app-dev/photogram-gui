@@ -1,6 +1,9 @@
 class PhotoController < ApplicationController
   def landing_page
 
+    matching_photos = Photo.all
+    @list_of_photos = matching_photos.order({ :created_at => :desc})
+    
     render({ :template => "photo_templates/landing.html.erb" })
   end
 
