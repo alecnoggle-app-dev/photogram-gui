@@ -13,6 +13,10 @@ class PhotoController < ApplicationController
     matching_photos = Photo.where({ :id => the_id })
     @the_photo = matching_photos.at(0)
 
-    render({ :template => "photo_templates/detail.html.erb" })
+    if @the_photo == nil
+      redirect_to("/404")
+    else
+      render({ :template => "photo_templates/detail.html.erb" })
+    end
   end
 end
