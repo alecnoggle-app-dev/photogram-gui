@@ -1,4 +1,11 @@
 class UserController < ApplicationController
+  
+  def homepage
+
+    redirect_to("/users")
+  end
+  
+  
   def landing_page
     matching_users = User.all
     @list_of_users = matching_users.order({ :username => :asc })
